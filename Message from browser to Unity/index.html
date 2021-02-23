@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Messages Testing</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/unity-web-build.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+		<div style="padding: 4px; background: green; color: white; display: inline-block; cursor: pointer;" id="myBtnOne">Первый</div>
+		<div style="padding: 4px; background: green; color: white; display: inline-block; cursor: pointer;" id="myBtnTwo">Второй</div>
+		<div style="padding: 4px; background: green; color: white; display: inline-block; cursor: pointer;" id="myBtnThree">Третий</div>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+      </div>
+    </div>
+	
+	<script>
+		function getID(id) {
+			return document.getElementById(id);
+		}
+		
+		function funcMyMessage(value) {
+			const objString = "Main Camera";
+			const funcString = "FuncForBrowser";
+			const messageString = "xxx_" + value + "_yyy";
+			unityInstance.SendMessage(objString, funcString, messageString);
+		}
+		
+		const btn_1 = getID("myBtnOne");
+		const btn_2 = getID("myBtnTwo");
+		const btn_3 = getID("myBtnThree");
+		
+		btn_1.onclick = () => funcMyMessage(1);
+		btn_2.onclick = () => funcMyMessage(2);
+		btn_3.onclick = () => funcMyMessage(3);
+		
+	</script>
+	
+  </body>
+</html>
