@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Maxim Message Test</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/t-2-uni-build.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="unityContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+		<h2 id="label-for-writing-id" style="display: inline-block;">Место для вывода</h2>
+        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+      </div>
+    </div>
+	
+	<script>
+	
+	function myJavaScriptFunc(message) {
+		if(!message) return;
+		if(!message.trim()) return;
+		///////////
+		const arr = message.split("_");
+		if("aaa" !== arr[0]) return;
+		if("bbb" !== arr[2]) return;
+		///////////
+		const value = arr[1];
+		const result = "Буква: " + value;
+		document.getElementById("label-for-writing-id").innerHTML = result;
+	}
+	
+	</script>
+	
+  </body>
+</html>
