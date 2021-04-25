@@ -1,0 +1,4 @@
+Создание линии
+
+GameObject > Effects > Line
+
